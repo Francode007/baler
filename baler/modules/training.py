@@ -70,6 +70,10 @@ def fit(
         # Compute the predicted outputs from the input data
         reconstructions = model(inputs)
 
+        # print('reconstructions shape: ', reconstructions.shape)
+        # print('max value from reconstructions: ', np.amax(reconstructions.detach().numpy()))
+        # print('min value from reconstructions: ', np.amin(reconstructions.detach().numpy()))
+
         if (
             hasattr(config, "custom_loss_function")
             and config.custom_loss_function == "loss_function_swae"

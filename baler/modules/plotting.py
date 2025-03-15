@@ -391,7 +391,7 @@ def plot_2D(project_path, config):
         )
 
     if data.shape[0] > 1:
-        num_tiles = data.shape[0]
+        num_tiles = 15
     else:
         num_tiles = 1
 
@@ -417,11 +417,17 @@ def plot_2D(project_path, config):
         max_value = np.amax([np.amax(tile_data), np.amax(tile_data_decompressed)])
         min_value = np.amin([np.amin(tile_data), np.amin(tile_data_decompressed)])
 
+        print('max value: ', max_value)
+        print('max value from tile data: ', np.amax(tile_data))
+        print('min value from tile data: ', np.amin(tile_data))
+        print('min value: ', min_value)
+
         fig, axs = plt.subplots(
             1, 3, figsize=(29.7 * (1 / 2.54), 10 * (1 / 2.54)), sharey=True
         )
         axs[0].set_title("Original", fontsize=11)
-        im1 = axs[0].imshow(tile_data, vmax=max_value, vmin=min_value)
+        # im1 = axs[0].imshow(tile_data, vmax=m5. ax_value, vmin=min_value)
+        im1 = axs[0].imshow(tile_data) # for viewing MNIST dataset viewing
         axs[1].set_title("Reconstructed", fontsize=11)
         im2 = axs[1].imshow(tile_data_decompressed, vmax=max_value, vmin=min_value)
         axs[2].set_title("Difference", fontsize=11)

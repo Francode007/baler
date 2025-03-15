@@ -171,6 +171,9 @@ def perform_training(output_path, config, verbose: bool):
     if verbose:
         print(f"Training path: {training_path}")
 
+    print('max of train_set_norm: ', np.amax(train_set_norm))
+    print('min of train_set_norm: ', np.amin(train_set_norm))
+    
     trained_model = helper.train(
         model, number_of_columns, train_set_norm, test_set_norm, training_path, config
     )

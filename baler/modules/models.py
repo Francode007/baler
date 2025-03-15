@@ -399,6 +399,15 @@ class Conv_AE(nn.Module):
         z = self.encode(x)
         out = self.decode(z)
         return out
+    
+    def get_hook(self, layer_name):
+        def hook(model, input, output):
+            self.activations[layer_name] = output.detach()
+
+        return hook
+    
+    # def get_layers(self) -> list:
+    #     return [self.en1, self.en2, self.en3, self.de1, self.de2, self.de3]
 
     def get_final_layer_dims(self):
         return self.conv_op_shape

@@ -76,7 +76,7 @@ def get_arguments():
     parser.add_argument(
         "--verbose", dest="verbose", action="store_true", help="Verbose mode"
     )
-    parser.set_defaults(verbose=False)
+    parser.set_defaults(verbose=True)
 
     args = parser.parse_args()
 
